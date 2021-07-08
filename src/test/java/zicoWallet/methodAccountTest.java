@@ -7,22 +7,28 @@ class methodAccountTest {
 	
 	@Test
 	public void testAccountBalance(){
-		MethodAccount account = new MethodAccount(0.0);
+		AccountMethod account = new AccountMethod(0.0);
 		Assertions.assertEquals(0.0, account.getBalance());
 	}
 	
 	@Test
-	public void testCustomerCanSave(){
-		MethodAccount account = new MethodAccount();
-		account.credit(200);
-		Assertions.assertEquals(200, account.getCredit());
+	public void testCanWithdraw(){
+		AccountMethod methodAccount = new AccountMethod();
+		methodAccount.withdraw(2500);
+		Assertions.assertEquals(500, methodAccount.getWithdraw());
 	}
 	
 	@Test
-	public void testCustomerCanSendMoney(){
-		MethodAccount methodAccount = new MethodAccount();
-		methodAccount.sendAmount(2500);
-		Assertions.assertEquals(500, methodAccount.getTransfer());
+	public  void testIsCreated(){
+		AccountMethod accountMethod = new AccountMethod();
+		accountMethod.credit(-1);
+		Assertions.assertEquals(2999, accountMethod.getCredit());
 	}
 	
+	@Test
+	public void testCanTransfer(){
+		AccountMethod accountMethod = new AccountMethod();
+		accountMethod.sendAmount(3500);
+		Assertions.assertEquals(3000, accountMethod.getTransfer());
+	}
 }

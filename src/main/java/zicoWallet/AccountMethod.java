@@ -1,6 +1,6 @@
 package zicoWallet;
 
-public class MethodAccount {
+public class AccountMethod {
 
 	/** This are the  necessary things a customer will need to open
 	 * a bank account**/
@@ -11,16 +11,15 @@ public class MethodAccount {
 	private String dob;
 	private String address;
 	private int id;
-	private double balance;
+	private double balance = 3000;
 	
 	/**We are creating different constructors also called 'method overloading'
 	 * this method is for flexibility**/
 	
 	
-	public MethodAccount(){}
+	public AccountMethod(){}
 	
-	
-	public MethodAccount(String firstName, String lastName, String dob
+	public AccountMethod(String firstName, String lastName, String dob
 			, String address) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -28,12 +27,12 @@ public class MethodAccount {
 		this.address = address;
 	}
 	
-	public MethodAccount(int id, int mobileNumber) {
+	public AccountMethod(int id, int mobileNumber) {
 		this.id = id;
 		this.mobileNumber = mobileNumber;
 	}
 	
-	public MethodAccount(String firstName, String lastName, int mobileNumber,
+	public AccountMethod(String firstName, String lastName, int mobileNumber,
 						 String dob, String address, int id) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -73,27 +72,38 @@ public class MethodAccount {
 	/**I created a balance method that validate that user balance
 	 * can't be less than 0**/
 	
-	public double withdraw(double isWithdraw){
-		if (isWithdraw > 0.00)
+	public void withdraw(double isWithdraw){
+		if (isWithdraw > balance)
+			System.out.print("Transaction error.");
+		
+		if (isWithdraw <= balance && isWithdraw >= 0)
+			System.out.print("Transaction successful..");
 			balance = balance - isWithdraw;
-		return balance;
 	}
+	
 	
 	/**I created a withdrawal method that checks and validate amounts/ balance is
 	 * not below or higher than what a user saves or withdrew**/
 	
 	public void credit(int isCredited){
-		if (isCredited > 0.00)
-			balance = balance + isCredited;
+		if (isCredited < 0)
+			System.out.print("Transaction could not be performed.");
+		
+		if (isCredited > 0)
+			System.out.print("Your account has been credited.");
+		balance = balance + isCredited;
 	}
 	
 	public double getCredit(){
-		return balance  ;
+		return balance;
 	}
 	
-	public void sendAmount(double transfer){
+	public void sendAmount(float transfer){
+		if (transfer > balance)
+			System.out.print("Insufficient balance to make transactions.");
+		
 		if (transfer <= balance)
-			balance = balance - transfer;
+			balance = transfer - balance;
 	}
 	
 	public double getTransfer() {
@@ -101,12 +111,16 @@ public class MethodAccount {
 	}
 	
 	
-	public MethodAccount(double balance) {
+	public AccountMethod(double balance) {
 		if (balance == balance && balance >= 0)
 			this.balance = balance;
 	}
 	
 	public double getBalance() {
+		return balance;
+	}
+	
+	public double getWithdraw() {
 		return balance;
 	}
 }
