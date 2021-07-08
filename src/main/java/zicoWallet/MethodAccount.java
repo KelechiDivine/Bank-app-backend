@@ -1,6 +1,6 @@
 package zicoWallet;
 
-public class methodAccount {
+public class MethodAccount {
 
 	/** This are the  necessary things a customer will need to open
 	 * a bank account**/
@@ -11,16 +11,16 @@ public class methodAccount {
 	private String dob;
 	private String address;
 	private int id;
-	private double balance = 0;
+	private double balance;
 	
 	/**We are creating different constructors also called 'method overloading'
 	 * this method is for flexibility**/
 	
 	
-	public methodAccount(){}
+	public MethodAccount(){}
 	
 	
-	public methodAccount(String firstName, String lastName, String dob
+	public MethodAccount(String firstName, String lastName, String dob
 			, String address) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -28,17 +28,12 @@ public class methodAccount {
 		this.address = address;
 	}
 	
-	public methodAccount(int id, int mobileNumber) {
+	public MethodAccount(int id, int mobileNumber) {
 		this.id = id;
 		this.mobileNumber = mobileNumber;
 	}
 	
-	public methodAccount(double balance) {
-		if (balance > 0.00)
-			this.balance = balance;
-	}
-	
-	public methodAccount(String firstName, String lastName, int mobileNumber,
+	public MethodAccount(String firstName, String lastName, int mobileNumber,
 						 String dob, String address, int id) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -93,13 +88,25 @@ public class methodAccount {
 	}
 	
 	public double getCredit(){
+		return balance  ;
+	}
+	
+	public void sendAmount(double transfer){
+		if (transfer <= balance)
+			balance = balance - transfer;
+	}
+	
+	public double getTransfer() {
 		return balance;
 	}
 	
-	public double sendAmount(double transfer){
-		if (transfer <= balance)
-			balance = balance - transfer;
+	
+	public MethodAccount(double balance) {
+		if (balance == balance && balance >= 0)
+			this.balance = balance;
+	}
+	
+	public double getBalance() {
 		return balance;
 	}
-
 }
