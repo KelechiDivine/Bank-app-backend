@@ -1,0 +1,29 @@
+Simple Bank Application
+------------------------
+
+Language: Java
+Software: Maven
+Version: Java SE 16.0. 1
+
+Why bank application?
+-----------------------
+The Bank Account Management System is an application for
+maintaining a person's account in a bank. The Bank Account Management System
+undertaken as a project is based on relevant technologies. The main aim of this
+project is to develop small software for Bank Account Management System.
+
+What we will do.
+-----------------
+Our system will help the user to manage their accounts  It will Reduced manual
+work as most of the work done by computer.
+As all the manual work will be done automatically so it will increase work
+speed and reduce time consumption to complete any bank related work.
+It will also increase the work efficiency as we the employees can handle more customers.
+This will reduced the manual workload and give information instantly.
+
+The admin can check bank account with a login can work out with
+bank can withdraw/ deposit cash from their accounts. This system is also
+help bank user to create New account easily. The project makes a sincere effort to provide
+all the below-mentioned features to meet the requirements of the bank.
+
+I guess this should be the basic of what our bank application can and would do.
