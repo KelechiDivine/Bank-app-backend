@@ -11,10 +11,19 @@ class methodAccountTest {
 	}
 	
 	@Test
-	public void testCanWithdraw(){
+	public void testWithdrawIsOutOBounds() throws Exception {
 		AccountMethod methodAccount = new AccountMethod();
-		methodAccount.withdraw(2500);
-		Assertions.assertEquals(500, methodAccount.getWithdraw());
+		methodAccount.withdrawalOutOfBound(3500);
+		Throwable throwable = Assertions.assertThrows(IndexOutOfBoundsException.class,
+				methodAccount::getWithdraw);
+		Assertions.assertEquals("", throwable.getMessage());
+	}
+	
+	@Test
+	public void testWithdrawAmount(){
+		AccountMethod accountMethod = new AccountMethod();
+		accountMethod.withdraw(300);
+		Assertions.assertEquals(2700, accountMethod.getWithdraw());
 	}
 	
 	@Test
@@ -32,9 +41,18 @@ class methodAccountTest {
 	}
 	
 	@Test
-	public void testAmountCanTransfer(){
+	public void testAmountTransferIsOutOfBound() throws  IndexOutOfBoundsException{
 		AccountMethod accountMethod = new AccountMethod();
-		accountMethod.sendAmount(3500);
-		Assertions.assertEquals(3000, accountMethod.getTransfer());
+		accountMethod.sendAmountIsOutOfBound(3500);
+		Throwable throwable = Assertions.assertThrows(IndexOutOfBoundsException.class,
+				accountMethod::getTransfer);
+		Assertions.assertEquals("", throwable.getMessage());
+	}
+	
+	@Test
+	public void testAmountCanBeTransferred(){
+		AccountMethod accountMethod = new AccountMethod();
+		accountMethod.sendMoney(2900);
+		Assertions.assertEquals(100, accountMethod.getTransfer());
 	}
 }

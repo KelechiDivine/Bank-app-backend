@@ -19,18 +19,18 @@ public class AccountMethod {
 	
 	public AccountMethod(){}
 	
-	public AccountMethod(String firstName, String lastName, String dob
-			, String address) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dob = dob;
-		this.address = address;
-	}
-	
-	public AccountMethod(int id, int mobileNumber) {
-		this.id = id;
-		this.mobileNumber = mobileNumber;
-	}
+//	public AccountMethod(String firstName, String lastName, String dob
+//			, String address) {
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.dob = dob;
+//		this.address = address;
+//	}
+//
+//	public AccountMethod(int id, int mobileNumber) {
+//		this.id = id;
+//		this.mobileNumber = mobileNumber;
+//	}
 	
 	public AccountMethod(String firstName, String lastName, int mobileNumber,
 						 String dob, String address, int id) {
@@ -69,18 +69,23 @@ public class AccountMethod {
 		return id;
 	}
 	
-	/** I created a balance method that validate that user balance
-	 * can't be less than 0 **/
+	/** I created a withdrawal method that validate that a user cant't
+	 * withdraw less than 0 **/
 	
-	public void withdraw(double isWithdraw){
-		if (isWithdraw > balance)
-			System.out.print("Transaction error.");
+	public void withdrawalOutOfBound(double withdrawIsOutOfBound) throws Exception {
+		if (withdrawIsOutOfBound > balance)
+			throw new IndexOutOfBoundsException("Insufficient balance.. Try again!");
 		
-		if (isWithdraw <= balance && isWithdraw >= 0)
-			System.out.print("Transaction successful..");
-			balance = balance - isWithdraw;
+		if (withdrawIsOutOfBound < 0)
+			throw  new Exception("Withdrawal is invalid.");
 	}
 	
+	public void withdraw(Integer withdrawAmount){
+		
+		if (withdrawAmount < balance)
+			System.out.print("Withdrawal successful.");
+			balance = balance - withdrawAmount;
+	}
 	
 	/** I created a withdrawal method that checks and validate amounts/ balance is
 	 * not below or higher than what a user saves or withdrew **/
@@ -102,18 +107,19 @@ public class AccountMethod {
 		return balance;
 	}
 	
-	public void sendAmount(float transfer) {
-		if (transfer > balance)
-			System.out.print("Insufficient balance to make transactions.");
+	public void sendAmountIsOutOfBound(float transferIsOutOfBound) throws IndexOutOfBoundsException {
+		if (transferIsOutOfBound > balance)
+			throw new IndexOutOfBoundsException("Insufficient balance to make transactions.");
 		
-		if (transfer <= balance)
-			balance = transfer - balance;
+		if (transferIsOutOfBound < 0)
+			throw new IndexOutOfBoundsException("Invalid transaction.");
 	}
 	
-	public double getTransfer() {
-		return balance;
+	public  void sendMoney(double transfer){
+		if (transfer < balance)
+			System.out.print("Your transfer was successful.");
+		balance = balance - transfer;
 	}
-	
 	
 	public AccountMethod(double balance) {
 		if (balance == balance && balance >= 0)
@@ -125,6 +131,10 @@ public class AccountMethod {
 	}
 	
 	public double getWithdraw() {
+		return balance;
+	}
+	
+	public double getTransfer() {
 		return balance;
 	}
 }
