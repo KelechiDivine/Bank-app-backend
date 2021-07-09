@@ -3,7 +3,7 @@ package zicoWallet;
 public class AccountMethod {
 
 	/** This are the  necessary things a customer will need to open
-	 * a bank account**/
+	 * a bank account **/
 	
 	private String firstName;
 	private String lastName;
@@ -13,8 +13,8 @@ public class AccountMethod {
 	private int id;
 	private double balance = 3000;
 	
-	/**We are creating different constructors also called 'method overloading'
-	 * this method is for flexibility**/
+	/** We are creating different constructors also called 'method overloading'
+	 * this method is for flexibility **/
 	
 	
 	public AccountMethod(){}
@@ -69,8 +69,8 @@ public class AccountMethod {
 		return id;
 	}
 	
-	/**I created a balance method that validate that user balance
-	 * can't be less than 0**/
+	/** I created a balance method that validate that user balance
+	 * can't be less than 0 **/
 	
 	public void withdraw(double isWithdraw){
 		if (isWithdraw > balance)
@@ -82,13 +82,17 @@ public class AccountMethod {
 	}
 	
 	
-	/**I created a withdrawal method that checks and validate amounts/ balance is
-	 * not below or higher than what a user saves or withdrew**/
+	/** I created a withdrawal method that checks and validate amounts/ balance is
+	 * not below or higher than what a user saves or withdrew **/
 	
-	public void credit(int isCredited){
-		if (isCredited < 0)
-			System.out.print("Transaction could not be performed.");
-		
+	public AccountMethod(int CreditedIsOutOfBound) throws IndexOutOfBoundsException{
+
+		if (CreditedIsOutOfBound < 0)
+			throw new IndexOutOfBoundsException("Transaction could not be performed because " +
+					"balance is too low.");
+	}
+	
+	public AccountMethod(long isCredited){
 		if (isCredited > 0)
 			System.out.print("Your account has been credited.");
 		balance = balance + isCredited;
@@ -98,7 +102,7 @@ public class AccountMethod {
 		return balance;
 	}
 	
-	public void sendAmount(float transfer){
+	public void sendAmount(float transfer) {
 		if (transfer > balance)
 			System.out.print("Insufficient balance to make transactions.");
 		

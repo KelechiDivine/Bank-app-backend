@@ -2,7 +2,6 @@ package zicoWallet;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 class methodAccountTest {
 	
 	@Test
@@ -19,14 +18,21 @@ class methodAccountTest {
 	}
 	
 	@Test
-	public  void testIsCreated(){
-		AccountMethod accountMethod = new AccountMethod();
-		accountMethod.credit(-1);
-		Assertions.assertEquals(2999, accountMethod.getCredit());
+	public  void testIndexOutOfBoundsExceptionForCredited() throws IndexOutOfBoundsException{
+		AccountMethod accountMethod = new AccountMethod(-1);
+		Throwable throwable = Assertions.assertThrows(IndexOutOfBoundsException.class,
+				accountMethod::getCredit);
+		Assertions.assertEquals("", throwable.getMessage());
 	}
 	
 	@Test
-	public void testCanTransfer(){
+	public void testAccountCanBeCredited(){
+		AccountMethod accountMethod = new AccountMethod(100L);
+		Assertions.assertEquals(3100, accountMethod.getCredit());
+	}
+	
+	@Test
+	public void testAmountCanTransfer(){
 		AccountMethod accountMethod = new AccountMethod();
 		accountMethod.sendAmount(3500);
 		Assertions.assertEquals(3000, accountMethod.getTransfer());
