@@ -71,4 +71,8 @@ class methodAccountTest {
 		accountMethod.getAddressAndLocation("3, owojori", "lagos");
 		Assertions.assertEquals("3, owojori lagos", accountMethod.addressIsSaved());
 	}
+
+
+	//Auto-generate account balance--->My Task
+
 }

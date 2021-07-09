@@ -93,12 +93,16 @@ public class AccountMethod {
 	 * withdraw less than 0 **/
 	
 	public void withdrawalOutOfBound(double withdrawIsOutOfBound) throws Exception {
+		//Check on it later
 		if (withdrawIsOutOfBound > balance)
 			throw new IndexOutOfBoundsException("Insufficient balance.. Try again!");
-		
+
 		if (withdrawIsOutOfBound < 0)
-			throw  new Exception("Withdrawal is invalid.");
+			throw  new Exception("Withdrawal is invalid.");*/
+
 	}
+
+
 	
 	public void withdraw(Integer withdrawAmount){
 		
