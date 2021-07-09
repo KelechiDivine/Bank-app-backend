@@ -55,4 +55,20 @@ class methodAccountTest {
 		accountMethod.sendMoney(2900);
 		Assertions.assertEquals(100, accountMethod.getTransfer());
 	}
+	
+	@Test
+	public void testAddressCantBeNull() throws IllegalArgumentException{
+		AccountMethod method = new AccountMethod();
+		method.addressFieldCantBeNull("");
+		Throwable throwable = Assertions.assertThrows(IllegalArgumentException.class,
+				method::returnAddress);
+		Assertions.assertEquals("", throwable.getMessage());
+	}
+	
+	@Test
+	public void  testAddressCanBeSaved(){
+		AccountMethod accountMethod = new AccountMethod();
+		accountMethod.getAddressAndLocation("3, owojori", "lagos");
+		Assertions.assertEquals("3, owojori lagos", accountMethod.addressIsSaved());
+	}
 }

@@ -61,15 +61,35 @@ public class AccountMethod {
 		return dob;
 	}
 	
-	public String getAddress() {
-		return address;
+	public void addressFieldCantBeNull(String address) throws IllegalArgumentException{
+		if (address == null) {
+			assert false;
+			System.out.println(address.isEmpty());
+		}
+			throw new IllegalArgumentException("Address can't be null.");
+	}
+	
+	private String saved;
+	
+	public void getAddressAndLocation(String address, String location){
+		if (address.equals(saved))
+			System.out.println(address);
+		if (location.equals(saved))
+			System.out.print(location);
+		
+		System.out.print("Address and location has been saved.");
+		saved = (address + " "+ location);
+	
+	}
+	
+	public void returnAddress(){
 	}
 	
 	public int getId() {
 		return id;
 	}
 	
-	/** I created a withdrawal method that validate that a user cant't
+	/** I created a withdrawal method that validate that a user can't
 	 * withdraw less than 0 **/
 	
 	public void withdrawalOutOfBound(double withdrawIsOutOfBound) throws Exception {
@@ -136,5 +156,9 @@ public class AccountMethod {
 	
 	public double getTransfer() {
 		return balance;
+	}
+	
+	public String addressIsSaved() {
+		return saved;
 	}
 }
